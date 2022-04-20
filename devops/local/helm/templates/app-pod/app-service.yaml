@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: {{ .Values.app.prefix }}-app
+  name: {{ .Values.app.prefix }}-app
+  namespace: {{ .Values.app.namespace }}
+spec:
+  type: NodePort
+  ports:
+  - name: {{ .Values.service.authproxy.name }}
+    port: {{ .Values.service.authproxy.port }}
+    targetPort: {{ .Values.service.authproxy.targetPort }}
+  - name: {{ .Values.service.camunda.name }}
+    port: {{ .Values.service.camunda.port }}
+    targetPort: {{ .Values.service.camunda.targetPort }}
+  - name: {{ .Values.service.security.name }}
+    port: {{ .Values.service.security.port }}
+    targetPort: {{ .Values.service.security.targetPort }}
+  - name: {{ .Values.service.admin.name }}
+    port: {{ .Values.service.admin.port }}
+    targetPort: {{ .Values.service.admin.targetPort }}
+  - name: {{ .Values.service.systementry.name }}
+    port: {{ .Values.service.systementry.port }}
+    targetPort: {{ .Values.service.systementry.targetPort }}
+
+  - name: {{ .Values.service.studentform.name }}
+    port: {{ .Values.service.studentform.port }}
+    targetPort: {{ .Values.service.studentform.targetPort }}
+
+  - name: {{ .Values.service.collegeform.name }}
+    port: {{ .Values.service.collegeform.port }}
+    targetPort: {{ .Values.service.collegeform.targetPort }}
+
+  - name: {{ .Values.service.empform.name }}
+    port: {{ .Values.service.empform.port }}
+    targetPort: {{ .Values.service.empform.targetPort }}
+
+  - name: {{ .Values.service.bankform.name }}
+    port: {{ .Values.service.bankform.port }}
+    targetPort: {{ .Values.service.bankform.targetPort }}
+
+  selector:
+    name: {{ .Values.app.prefix }}-app

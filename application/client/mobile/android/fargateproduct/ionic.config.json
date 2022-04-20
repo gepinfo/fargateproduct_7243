@@ -1,0 +1,7 @@
+{
+  "name": "fargateproduct",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
